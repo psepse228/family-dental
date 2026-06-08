@@ -1,0 +1,1423 @@
+﻿<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Dental Clinic — Stomatologiya Toshkent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #dcdbd8;
+      --bg2:       #e6e5e2;
+      --bg3:       #cfcecb;
+      --border:    rgba(0,0,0,0.1);
+      --accent:    #3a3a3a;
+      --accent2:   #555555;
+      --gold:      #6b6b6b;
+      --text:      #1a1a1a;
+      --muted:     #6b6b6b;
+      --radius:    14px;
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; line-height: 1.2; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── SCROLL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── NAVBAR ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(220,219,216,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+    .nav.scrolled {
+      background: rgba(220,219,216,0.98);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .nav-logo svg { width: 36px; height: 36px; }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.85rem; font-weight: 500;
+      color: var(--muted); letter-spacing: 0.5px; text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-book {
+      background: var(--accent);
+      color: #f0efec;
+      border: none; border-radius: 50px;
+      padding: 10px 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.83rem; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-book:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: var(--transition);
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 72px; left: 0; right: 0;
+      background: rgba(220,219,216,0.98);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 5%;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 20px; }
+    .mobile-menu a {
+      font-size: 1rem; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-menu .btn-book { width: 100%; text-align: center; display: block; margin-top: 20px; padding: 14px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 5% 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 40%, rgba(100,100,100,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0,0,0,0.03) 0%, transparent 50%),
+        var(--bg);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.14);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 1px;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: ''; display: block; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(120deg, #1a1a1a, #6b6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 520px; margin-bottom: 40px;
+      line-height: 1.75;
+    }
+    .hero-cta {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #f0efec;
+      border: none; border-radius: 50px;
+      padding: 16px 36px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .btn-secondary {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--muted); font-size: 0.9rem; font-weight: 500;
+      transition: color var(--transition);
+    }
+    .btn-secondary:hover { color: var(--text); }
+    .btn-secondary .play-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+    }
+    .btn-secondary:hover .play-icon {
+      border-color: var(--accent);
+      background: rgba(0,0,0,0.06);
+    }
+    .hero-image {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: 48%; z-index: 1;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      mask-image: linear-gradient(to right, transparent 0%, black 20%, black 100%);
+    }
+    .hero-scroll {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+      z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--muted); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .hero-scroll .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, #888888, transparent);
+      animation: scroll-line 2s infinite;
+    }
+    @keyframes scroll-line {
+      0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 5%;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .stat-item {
+      background: var(--bg2);
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem; font-weight: 700;
+      background: linear-gradient(120deg, #1a1a1a, #6b6b6b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.8rem; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 1px; margin-top: 8px;
+    }
+
+    /* ── SECTION COMMON ── */
+    .section {
+      padding: 100px 5%;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .section-full { padding: 100px 5%; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 600;
+      color: var(--accent); letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700; margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--muted);
+      max-width: 520px; line-height: 1.75;
+    }
+    .section-header { margin-bottom: 64px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ── SERVICES ── */
+    .services-bg { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+    }
+    .service-card {
+      background: var(--bg2);
+      padding: 40px 36px;
+      position: relative; overflow: hidden;
+      transition: background var(--transition);
+      cursor: default;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #d4d4d4, #555555);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover { background: var(--bg3); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 24px;
+      transition: background var(--transition);
+    }
+    .service-card:hover .service-icon { background: rgba(0,0,0,0.11); }
+    .service-icon svg { width: 24px; height: 24px; color: var(--accent); }
+    .service-card h3 {
+      font-size: 1.1rem; font-weight: 600;
+      margin-bottom: 12px; font-family: 'DM Sans', sans-serif;
+    }
+    .service-card p {
+      font-size: 0.88rem; color: var(--muted); line-height: 1.7;
+    }
+    .service-number {
+      position: absolute; top: 20px; right: 24px;
+      font-size: 4rem; font-weight: 700; font-family: 'Playfair Display', serif;
+      color: rgba(0,0,0,0.07); line-height: 1;
+      user-select: none;
+    }
+
+    /* ── WHY US ── */
+    .whyus-bg { background: var(--bg2); }
+    .whyus-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      max-width: 1200px; margin: 0 auto;
+      padding: 100px 5%;
+    }
+    .whyus-visual {
+      position: relative;
+    }
+    .whyus-visual img {
+      width: 100%; border-radius: var(--radius);
+      aspect-ratio: 4/5; object-fit: cover;
+    }
+    .whyus-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .whyus-badge .big { font-size: 2.4rem; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--accent); }
+    .whyus-badge .small { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+    .feature-item { display: flex; gap: 16px; align-items: flex-start; }
+    .feature-icon {
+      flex-shrink: 0; width: 40px; height: 40px;
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 2px;
+    }
+    .feature-icon svg { width: 18px; height: 18px; color: var(--accent); }
+    .feature-item h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
+    .feature-item p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── BEFORE / AFTER ── */
+    .ba-section { background: var(--bg); }
+    .ba-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 20px;
+    }
+    .ba-card {
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; aspect-ratio: 3/4;
+      cursor: pointer;
+    }
+    .ba-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .ba-card:hover img { transform: scale(1.05); }
+    .ba-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,11,15,0.85) 0%, transparent 50%);
+      display: flex; align-items: flex-end; padding: 20px;
+    }
+    .ba-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.75rem; font-weight: 500;
+      color: #f0efec; letter-spacing: 0.5px;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-bg { background: var(--bg2); }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .testimonial-card:hover {
+      border-color: rgba(0,0,0,0.2);
+      transform: translateY(-4px);
+    }
+    .stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .stars svg { width: 16px; height: 16px; color: #3a3a3a; fill: #3a3a3a; }
+    .testimonial-text {
+      font-size: 0.93rem; line-height: 1.75;
+      color: rgba(26,26,26,0.8);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .author-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, #e8e8e8, #aaaaaa);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; color: #080b0f;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.9rem; font-weight: 600; }
+    .author-meta { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── TEAM ── */
+    .team-section { background: var(--bg); }
+    .team-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .team-card {
+      border-radius: var(--radius); overflow: hidden;
+      position: relative; background: var(--bg2);
+      border: 1px solid var(--border);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .team-card:hover {
+      border-color: rgba(0,0,0,0.2);
+      transform: translateY(-4px);
+    }
+    .team-photo {
+      width: 100%; aspect-ratio: 3/4; object-fit: cover;
+      filter: grayscale(20%);
+      transition: filter var(--transition), transform 0.5s ease;
+    }
+    .team-card:hover .team-photo { filter: grayscale(0%); transform: scale(1.03); }
+    .team-info { padding: 20px 24px; }
+    .team-name { font-size: 1rem; font-weight: 600; margin-bottom: 4px; font-family: 'DM Sans', sans-serif; }
+    .team-role { font-size: 0.8rem; color: var(--accent); font-weight: 500; letter-spacing: 0.5px; }
+
+    /* ── CONTACT ── */
+    .contact-bg { background: var(--bg2); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 80px; align-items: start;
+      max-width: 1200px; margin: 0 auto;
+      padding: 100px 5%;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 28px; }
+    .contact-item {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .contact-item-icon {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .contact-item-icon svg { width: 20px; height: 20px; color: var(--accent); }
+    .contact-item-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .contact-item-value { font-size: 0.95rem; font-weight: 500; }
+    .contact-item-value a { color: var(--text); transition: color var(--transition); }
+    .contact-item-value a:hover { color: var(--accent); }
+    .contact-form {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .contact-form h3 {
+      font-size: 1.4rem; margin-bottom: 8px;
+    }
+    .contact-form p { font-size: 0.88rem; color: var(--muted); margin-bottom: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-group label { font-size: 0.78rem; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--text);
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(0,0,0,0.3);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--bg2); }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #3a3a3a, #666666);
+      color: #f0efec;
+      border: none; border-radius: 50px;
+      padding: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; font-weight: 600;
+      cursor: pointer; letter-spacing: 0.5px;
+      margin-top: 8px;
+      transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 64px 5% 32px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px; margin-bottom: 56px;
+    }
+    .footer-brand p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-top: 16px; max-width: 260px; }
+    .footer-socials { display: flex; gap: 12px; margin-top: 20px; }
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+    .social-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(0,0,0,0.06); }
+    .social-link svg { width: 16px; height: 16px; }
+    .footer-col h4 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col ul li a { font-size: 0.88rem; color: var(--muted); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--text); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: var(--muted); }
+
+    /* ── LANG SWITCHER ── */
+    .lang-switcher {
+      display: flex; align-items: center; gap: 4px;
+      background: rgba(0,0,0,0.07);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 50px;
+      padding: 4px 6px;
+    }
+    .lang-btn {
+      background: none; border: none;
+      padding: 4px 10px; border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.5px; text-transform: uppercase;
+      color: var(--muted); cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #f0efec;
+    }
+
+    /* ── FLOATING WA BUTTON ── */
+    .wa-float {
+      position: fixed; bottom: 32px; right: 32px; z-index: 50;
+      width: 56px; height: 56px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+    .wa-float svg { width: 28px; height: 28px; color: white; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .whyus-inner { grid-template-columns: 1fr; gap: 48px; }
+      .whyus-visual { display: none; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav .btn-book { display: none; }
+      .hamburger { display: flex; }
+      .hero { flex-direction: column; }
+      .hero-image { position: relative; width: 100%; height: 280px; margin-top: 40px; }
+      .hero-image img { mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .ba-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav" id="navbar">
+  <a href="#" class="nav-logo">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="18" fill="#3a3a3a"/>
+      <path d="M18 7c-3.2 0-5.5 1.8-6.5 4.2-.5 1.2-.5 2.5-.3 3.7.4 2.4 1.2 4.6 1.4 7 .1 1.3.2 2.7 1.1 3.7.6.7 1.5 1.1 2.3.8.6-.2 1-.8 1.3-1.4.3-.6.5-1.3.7-1.3.2 0 .4.7.7 1.3.3.6.7 1.2 1.3 1.4.8.3 1.7-.1 2.3-.8.9-1 1-2.4 1.1-3.7.2-2.4 1-4.6 1.4-7 .2-1.2.2-2.5-.3-3.7C23.5 8.8 21.2 7 18 7z" fill="#f0efec"/>
+    </svg>
+    Family Dental Clinic
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services" data-i18n="nav-services">Xizmatlar</a></li>
+    <li><a href="#about" data-i18n="nav-about">Biz haqimizda</a></li>
+    <li><a href="#results" data-i18n="nav-results">Natijalar</a></li>
+    <li><a href="#team" data-i18n="nav-team">Shifokorlar</a></li>
+    <li><a href="#contact" data-i18n="nav-contact">Aloqa</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btn-uz" onclick="setLang('uz')">UZ</button>
+      <button class="lang-btn" id="btn-ru" onclick="setLang('ru')">RU</button>
+    </div>
+    <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="nav-book">
+      Qabul Yozish
+    </button>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#services" onclick="toggleMenu()" data-i18n="nav-services">Xizmatlar</a></li>
+    <li><a href="#about" onclick="toggleMenu()" data-i18n="nav-about">Biz haqimizda</a></li>
+    <li><a href="#results" onclick="toggleMenu()" data-i18n="nav-results">Natijalar</a></li>
+    <li><a href="#team" onclick="toggleMenu()" data-i18n="nav-team">Shifokorlar</a></li>
+    <li><a href="#contact" onclick="toggleMenu()" data-i18n="nav-contact">Aloqa</a></li>
+  </ul>
+  <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'}); toggleMenu()" data-i18n="nav-book">
+    Qabul Yozish
+  </button>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge reveal" data-i18n="hero-badge">Toshkentdagi #1 Stomatologiya</div>
+    <h1 class="reveal reveal-delay-1">
+      <span data-i18n="hero-h1-line1">Chiroyli</span><br/>
+      <span class="highlight" data-i18n="hero-h1-highlight">tabassum</span><br/>
+      <span data-i18n="hero-h1-line3">biz bilan</span>
+    </h1>
+    <p class="reveal reveal-delay-2" data-i18n="hero-p">
+      Zamonaviy uskunalar va tajribali shifokorlar bilan tishlaringizni davolaymiz.
+      Yahwi kayfiyat va professional xizmat — bu bizning standartimiz.
+    </p>
+    <div class="hero-cta reveal reveal-delay-3">
+      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-i18n="hero-btn-primary">
+        Bepul Konsultatsiya
+      </button>
+      <a href="#results" class="btn-secondary">
+        <div class="play-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M3 2l8 5-8 5V2z"/>
+          </svg>
+        </div>
+        <span data-i18n="hero-btn-secondary">Natijalarni Ko'rish</span>
+      </a>
+    </div>
+  </div>
+  <div class="hero-image reveal reveal-delay-2">
+    <img src="./hero.jpg" alt="Family Dental Clinic Klinika" onerror="this.src='https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=900&q=80&auto=format&fit=crop&grayscale'" />
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number">2000+</div>
+      <div class="stat-label" data-i18n="stat-1">Bemorlar</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-number">5+</div>
+      <div class="stat-label" data-i18n="stat-2">Yil Tajriba</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-number">98%</div>
+      <div class="stat-label" data-i18n="stat-3">Mamnun Bemorlar</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-number">15+</div>
+      <div class="stat-label" data-i18n="stat-4">Xizmat Turi</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES ── -->
+<section class="section-full services-bg" id="services">
+  <div class="section" style="max-width:1200px; margin:0 auto; padding:100px 5%;">
+    <div class="section-header center">
+      <span class="section-label reveal" data-i18n="svc-label">Bizning Xizmatlar</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="svc-title">Barcha turdagi<br/>stomatologik xizmatlar</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="svc-sub">Og'riqsiz davolash, zamonaviy uskunalar va har bir bemor uchun individual yondashuv.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-number">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2C8.7 2 6 4.7 6 8c0 2.4 1.3 4.4 3.3 5.5L7 22h10l-2.3-8.5C16.7 12.4 18 10.4 18 8c0-3.3-2.7-6-6-6z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc1-title">Profilaktik Tozalash</h3>
+        <p data-i18n="svc1-desc">Professional ultratovush va Air Flow usullari bilan tishlarni chuqur tozalash va kariesdan himoya qilish.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-number">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc2-title">Tish Oqartirish</h3>
+        <p data-i18n="svc2-desc">Zamonaviy Zoom va office whitening texnologiyalari bilan tishlaringizni bir seans ichida yorqin oq rangga oling.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-number">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M9 12l2 2 4-4"/>
+            <path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc3-title">Karies Davolash</h3>
+        <p data-i18n="svc3-desc">Og'riqsiz anesteziya va zamonaviy kompozit materiallar yordamida kariesni to'liq davolash.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-number">04</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc4-title">Tish Protezlash</h3>
+        <p data-i18n="svc4-desc">Yuqori sifatli keramika va zirkon materiallaridan tayyorlangan toj va ko'priklar bilan estetik natija.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-number">05</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc5-title">Implantatsiya</h3>
+        <p data-i18n="svc5-desc">Nobel Biocare va Straumann implantlari bilan yo'qotilgan tishlarni tiklash. Umrbod kafolat.</p>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-number">06</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+          </svg>
+        </div>
+        <h3 data-i18n="svc6-title">Estetik Stomatologiya</h3>
+        <p data-i18n="svc6-desc">Vinirlar, smile design va kompleks estetik davolash bilan orzuingizagi tabassumga ega bo'ling.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section class="whyus-bg" id="about">
+  <div class="whyus-inner">
+    <div class="whyus-visual reveal">
+      <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=600&q=80&auto=format&fit=crop" alt="Family Dental Clinic klinika" />
+      <div class="whyus-badge">
+        <div class="big">5★</div>
+        <div class="small">Reyting</div>
+      </div>
+    </div>
+    <div>
+      <span class="section-label reveal" data-i18n="about-label">Nega Biz?</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="about-title">Sizning sog'lig'ingiz<br/>bizning ustuvorligimiz</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="about-sub">
+        Family Dental Clinic — Toshkentdagi zamonaviy stomatologiya klinikasi.
+        Har bir bemorga individual yondashuv va maksimal qulaylik ta'minlaymiz.
+      </p>
+      <ul class="features-list">
+        <li class="feature-item reveal reveal-delay-1">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+          </div>
+          <div>
+            <h4 data-i18n="feat1-title">Og'riqsiz Davolash</h4>
+            <p data-i18n="feat1-desc">Zamonaviy og'riqsizlantiruvchi preparatlar va texnologiyalar bilan davolash jarayoni mutlaqo qulay.</p>
+          </div>
+        </li>
+        <li class="feature-item reveal reveal-delay-2">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <h4 data-i18n="feat2-title">Sterilizatsiya Kafolati</h4>
+            <p data-i18n="feat2-desc">Barcha asbob-uskunalar xalqaro standartlarga mos ravishda sterilizatsiya qilinadi.</p>
+          </div>
+        </li>
+        <li class="feature-item reveal reveal-delay-3">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <h4 data-i18n="feat3-title">Qulay Ish Vaqti</h4>
+            <p data-i18n="feat3-desc">Du-Sha 08:00 — 00:00 gacha ishlаymiz. Kechki va dam olish kunlarida ham qabul mavjud.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── BEFORE / AFTER ── -->
+<section class="section-full ba-section" id="results">
+  <div style="max-width:1200px; margin:0 auto; padding:100px 5%;">
+    <div class="section-header center">
+      <span class="section-label reveal" data-i18n="results-label">Natijalar</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="results-title">Bemorlarimizning<br/>o'zgarishlari</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="results-sub">Har bir tabassum ortida zamonaviy texnologiya va shifokorlar mahorati bor.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card reveal">
+        <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80&auto=format&fit=crop" alt="Tish oqartirish natijasi" />
+        <div class="ba-overlay"><span class="ba-tag">Oqartirish</span></div>
+      </div>
+      <div class="ba-card reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80&auto=format&fit=crop" alt="Estetik tiklash" />
+        <div class="ba-overlay"><span class="ba-tag">Vinirlar</span></div>
+      </div>
+      <div class="ba-card reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80&auto=format&fit=crop" alt="Implant natijasi" />
+        <div class="ba-overlay"><span class="ba-tag">Implant</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section-full testimonials-bg">
+  <div style="max-width:1200px; margin:0 auto; padding:100px 5%;">
+    <div class="section-header center">
+      <span class="section-label reveal" data-i18n="reviews-label">Fikrlar</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="reviews-title">Bemorlarimiz<br/>nima deyishadi</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text" data-i18n="review1">"Family Dental Clinic'da tishimni davolattim — shifokorlar juda professional va mehribon. Mutlaqo og'riq sezmadim. Natijadan juda mamnunman!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">Z</div>
+          <div>
+            <div class="author-name">Zulfiya Raximova</div>
+            <div class="author-meta">Toshkent • Oqartirish</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text" data-i18n="review2">"Implant o'rnattirgandan so'ng hayotim o'zgardi. Klinika juda zamonaviy, shifokorlar har bir savolga batafsil javob berdi. Tavsiya qilaman!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg,#c9a96e,#f0d89b);">A</div>
+          <div>
+            <div class="author-name">Alisher Toshmatov</div>
+            <div class="author-meta">Toshkent • Implant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text" data-i18n="review3">"Bolalarim ham men ham faqat Family Dental Clinic'ga boramiz. Klinika ichidagi muhit juda qulay, xodimlar har doim iltifotli. 10/10!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: linear-gradient(135deg,#b45ecc,#e87eb4);">M</div>
+          <div>
+            <div class="author-name">Malika Yusupova</div>
+            <div class="author-meta">Toshkent • Oilaviy Bemor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section class="section-full team-section" id="team">
+  <div style="max-width:1200px; margin:0 auto; padding:100px 5%;">
+    <div class="section-header center">
+      <span class="section-label reveal" data-i18n="team-label">Jamoamiz</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="team-title">Tajribali<br/>shifokorlar</h2>
+      <p class="section-sub reveal reveal-delay-2" data-i18n="team-sub">Har bir shifokorimiz xalqaro darajadagi ta'lim va sertifikatlarga ega.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80&auto=format&fit=crop" alt="Bosh shifokor" />
+        <div class="team-info">
+          <div class="team-name">Dr. Jasur Nazarov</div>
+          <div class="team-role" data-i18n="doc1-role">Bosh Shifokor · Implantolog</div>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-1">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80&auto=format&fit=crop" alt="Ortodont" />
+        <div class="team-info">
+          <div class="team-name">Dr. Nilufar Karimova</div>
+          <div class="team-role" data-i18n="doc2-role">Ortodont · Estetik Stomatolog</div>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-2">
+        <img class="team-photo" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=500&q=80&auto=format&fit=crop" alt="Pediatrik stomatolog" />
+        <div class="team-info">
+          <div class="team-name">Dr. Bobur Xolmatov</div>
+          <div class="team-role" data-i18n="doc3-role">Terapevt · Pediatrik Stomatolog</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-bg" id="contact">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label reveal" data-i18n="contact-label">Aloqa</span>
+      <h2 class="section-title reveal reveal-delay-1" data-i18n="contact-title">Qabul yozing<br/>yoki bog'laning</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:48px;" data-i18n="contact-sub">
+        Bizga murojaat qiling — birinchi konsultatsiya bepul.
+        Siz uchun qulay vaqtda qabul tashkil qilamiz.
+      </p>
+      <div class="contact-info">
+        <div class="contact-item reveal">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.32 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Telefon</div>
+            <div class="contact-item-value"><a href="tel:+998502113030">+998 50 211 30 30</a></div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-1">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Manzil</div>
+            <div class="contact-item-value">Massiv Kiyot 46, Toshkent</div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-2">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Ish Vaqti</div>
+            <div class="contact-item-value">Dushanba – Shanba: 08:00 – 00:00</div>
+          </div>
+        </div>
+        <div class="contact-item reveal reveal-delay-3">
+          <div class="contact-item-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="contact-item-label">Instagram</div>
+            <div class="contact-item-value"><a href="https://instagram.com/familydentalclinic.uzb" target="_blank">@familydentalclinic.uzb</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-1">
+      <h3 data-i18n="form-title">Qabul Yozish</h3>
+      <p data-i18n="form-sub">Formani to'ldiring, biz siz bilan bog'lanamiz.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="form-name">Ismingiz</label>
+          <input type="text" data-i18n-placeholder="form-name-ph" placeholder="Ismingizni kiriting" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="form-phone">Telefon</label>
+          <input type="tel" placeholder="+998 __ ___ __ __" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-service">Xizmat Turi</label>
+        <select>
+          <option value="" data-i18n="form-select">Tanlang...</option>
+          <option data-i18n="svc1-title">Profilaktik Tozalash</option>
+          <option data-i18n="svc2-title">Tish Oqartirish</option>
+          <option data-i18n="svc3-title">Karies Davolash</option>
+          <option data-i18n="svc4-title">Tish Protezlash</option>
+          <option data-i18n="svc5-title">Implantatsiya</option>
+          <option data-i18n="svc6-title">Estetik Stomatologiya</option>
+          <option data-i18n="form-consult">Konsultatsiya</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-msg">Xabar (ixtiyoriy)</label>
+        <textarea data-i18n-placeholder="form-msg-ph" placeholder="Muammo yoki savolingizni yozing..."></textarea>
+      </div>
+      <button class="btn-submit" onclick="handleSubmit(event)" data-i18n="form-submit">
+        Qabul Yozish →
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo" style="font-size:1.1rem;">
+        <svg width="32" height="32" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="18" fill="#3a3a3a"/>
+          <path d="M18 7c-3.2 0-5.5 1.8-6.5 4.2-.5 1.2-.5 2.5-.3 3.7.4 2.4 1.2 4.6 1.4 7 .1 1.3.2 2.7 1.1 3.7.6.7 1.5 1.1 2.3.8.6-.2 1-.8 1.3-1.4.3-.6.5-1.3.7-1.3.2 0 .4.7.7 1.3.3.6.7 1.2 1.3 1.4.8.3 1.7-.1 2.3-.8.9-1 1-2.4 1.1-3.7.2-2.4 1-4.6 1.4-7 .2-1.2.2-2.5-.3-3.7C23.5 8.8 21.2 7 18 7z" fill="#f0efec"/>
+        </svg>
+        Family Dental Clinic
+      </div>
+      <p>Toshkentdagi zamonaviy stomatologiya klinikasi. Yahwi kayfiyat va chiroyli tabassum — bu bizning maqsadimiz.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/familydentalclinic.uzb" target="_blank" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://t.me/familydentalclinic.uzb" target="_blank" class="social-link" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a href="https://wa.me/998502113030" target="_blank" class="social-link" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="svc-label">Xizmatlar</h4>
+      <ul>
+        <li><a href="#services" data-i18n="svc1-title">Profilaktik Tozalash</a></li>
+        <li><a href="#services" data-i18n="svc2-title">Tish Oqartirish</a></li>
+        <li><a href="#services" data-i18n="svc3-title">Karies Davolash</a></li>
+        <li><a href="#services" data-i18n="svc4-title">Tish Protezlash</a></li>
+        <li><a href="#services" data-i18n="svc5-title">Implantatsiya</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="footer-clinic">Klinika</h4>
+      <ul>
+        <li><a href="#about" data-i18n="nav-about">Biz Haqimizda</a></li>
+        <li><a href="#team" data-i18n="nav-team">Shifokorlar</a></li>
+        <li><a href="#results" data-i18n="nav-results">Natijalar</a></li>
+        <li><a href="#contact" data-i18n="nav-contact">Aloqa</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-i18n="nav-contact">Aloqa</h4>
+      <ul>
+        <li><a href="tel:+998502113030">+998 50 211 30 30</a></li>
+        <li><a href="#">Massiv Kiyot 46</a></li>
+        <li><a href="#">Toshkent, O'zbekiston</a></li>
+        <li><a href="#">08:00 – 00:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Family Dental Clinic Dentistry. Barcha huquqlar himoyalangan.</p>
+    <p style="color:var(--muted); font-size:0.75rem;">Toshkent, O'zbekiston</p>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/998502113030" target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  // ── Translations
+  const translations = {
+    uz: {
+      'nav-services': 'Xizmatlar',
+      'nav-about': 'Biz haqimizda',
+      'nav-results': 'Natijalar',
+      'nav-team': 'Shifokorlar',
+      'nav-contact': 'Aloqa',
+      'nav-book': 'Qabul Yozish',
+      'hero-badge': 'Toshkentdagi #1 Stomatologiya',
+      'hero-h1-line1': 'Chiroyli',
+      'hero-h1-highlight': 'tabassum',
+      'hero-h1-line3': 'biz bilan',
+      'hero-p': "Zamonaviy uskunalar va tajribali shifokorlar bilan tishlaringizni davolaymiz. Yahwi kayfiyat va professional xizmat — bu bizning standartimiz.",
+      'hero-btn-primary': 'Bepul Konsultatsiya',
+      'hero-btn-secondary': "Natijalarni Ko'rish",
+      'stat-1': 'Bemorlar',
+      'stat-2': 'Yil Tajriba',
+      'stat-3': 'Mamnun Bemorlar',
+      'stat-4': 'Xizmat Turi',
+      'svc-label': 'Bizning Xizmatlar',
+      'svc-title': 'Barcha turdagi<br/>stomatologik xizmatlar',
+      'svc-sub': "Og'riqsiz davolash, zamonaviy uskunalar va har bir bemor uchun individual yondashuv.",
+      'svc1-title': 'Profilaktik Tozalash',
+      'svc1-desc': "Professional ultratovush va Air Flow usullari bilan tishlarni chuqur tozalash va kariesdan himoya qilish.",
+      'svc2-title': 'Tish Oqartirish',
+      'svc2-desc': "Zamonaviy Zoom va office whitening texnologiyalari bilan tishlaringizni bir seans ichida yorqin oq rangga oling.",
+      'svc3-title': 'Karies Davolash',
+      'svc3-desc': "Og'riqsiz anesteziya va zamonaviy kompozit materiallar yordamida kariesni to'liq davolash.",
+      'svc4-title': 'Tish Protezlash',
+      'svc4-desc': "Yuqori sifatli keramika va zirkon materiallaridan tayyorlangan toj va ko'priklar bilan estetik natija.",
+      'svc5-title': 'Implantatsiya',
+      'svc5-desc': "Nobel Biocare va Straumann implantlari bilan yo'qotilgan tishlarni tiklash. Umrbod kafolat.",
+      'svc6-title': 'Estetik Stomatologiya',
+      'svc6-desc': "Vinirlar, smile design va kompleks estetik davolash bilan orzuingizagi tabassumga ega bo'ling.",
+      'about-label': 'Nega Biz?',
+      'about-title': "Sizning sog'lig'ingiz<br/>bizning ustuvorligimiz",
+      'about-sub': "Family Dental Clinic — Toshkentdagi zamonaviy stomatologiya klinikasi. Har bir bemorga individual yondashuv va maksimal qulaylik ta'minlaymiz.",
+      'feat1-title': "Og'riqsiz Davolash",
+      'feat1-desc': "Zamonaviy og'riqsizlantiruvchi preparatlar va texnologiyalar bilan davolash jarayoni mutlaqo qulay.",
+      'feat2-title': 'Sterilizatsiya Kafolati',
+      'feat2-desc': "Barcha asbob-uskunalar xalqaro standartlarga mos ravishda sterilizatsiya qilinadi.",
+      'feat3-title': 'Qulay Ish Vaqti',
+      'feat3-desc': "Du-Sha 08:00 — 00:00 gacha ishlaymiz. Kechki va dam olish kunlarida ham qabul mavjud.",
+      'results-label': 'Natijalar',
+      'results-title': "Bemorlarimizning<br/>o'zgarishlari",
+      'results-sub': "Har bir tabassum ortida zamonaviy texnologiya va shifokorlar mahorati bor.",
+      'reviews-label': 'Fikrlar',
+      'reviews-title': "Bemorlarimiz<br/>nima deyishadi",
+      'review1': '"Family Dental Clinic\'da tishimni davolattim — shifokorlar juda professional va mehribon. Mutlaqo og\'riq sezmadim. Natijadan juda mamnunman!"',
+      'review2': '"Implant o\'rnattirgandan so\'ng hayotim o\'zgardi. Klinika juda zamonaviy, shifokorlar har bir savolga batafsil javob berdi. Tavsiya qilaman!"',
+      'review3': '"Bolalarim ham men ham faqat Family Dental Clinic\'ga boramiz. Klinika ichidagi muhit juda qulay, xodimlar har doim iltifotli. 10/10!"',
+      'team-label': 'Jamoamiz',
+      'team-title': 'Tajribali<br/>shifokorlar',
+      'team-sub': "Har bir shifokorimiz xalqaro darajadagi ta'lim va sertifikatlarga ega.",
+      'doc1-role': 'Bosh Shifokor · Implantolog',
+      'doc2-role': 'Ortodont · Estetik Stomatolog',
+      'doc3-role': 'Terapevt · Pediatrik Stomatolog',
+      'contact-label': 'Aloqa',
+      'contact-title': "Qabul yozing<br/>yoki bog'laning",
+      'contact-sub': "Bizga murojaat qiling — birinchi konsultatsiya bepul. Siz uchun qulay vaqtda qabul tashkil qilamiz.",
+      'form-title': 'Qabul Yozish',
+      'form-sub': "Formani to'ldiring, biz siz bilan bog'lanamiz.",
+      'form-name': 'Ismingiz',
+      'form-name-ph': 'Ismingizni kiriting',
+      'form-phone': 'Telefon',
+      'form-service': 'Xizmat Turi',
+      'form-select': 'Tanlang...',
+      'form-consult': 'Konsultatsiya',
+      'form-msg': 'Xabar (ixtiyoriy)',
+      'form-msg-ph': 'Muammo yoki savolingizni yozing...',
+      'form-submit': 'Qabul Yozish →',
+      'footer-clinic': 'Klinika',
+    },
+    ru: {
+      'nav-services': 'Услуги',
+      'nav-about': 'О нас',
+      'nav-results': 'Результаты',
+      'nav-team': 'Врачи',
+      'nav-contact': 'Контакты',
+      'nav-book': 'Записаться',
+      'hero-badge': '#1 Стоматология в Ташкенте',
+      'hero-h1-line1': 'Красивая',
+      'hero-h1-highlight': 'улыбка',
+      'hero-h1-line3': 'с нами',
+      'hero-p': "Лечим зубы с помощью современного оборудования и опытных врачей. Хорошее настроение и профессиональный сервис — наш стандарт.",
+      'hero-btn-primary': 'Бесплатная Консультация',
+      'hero-btn-secondary': 'Смотреть результаты',
+      'stat-1': 'Пациентов',
+      'stat-2': 'Лет Опыта',
+      'stat-3': 'Довольных Пациентов',
+      'stat-4': 'Видов Услуг',
+      'svc-label': 'Наши Услуги',
+      'svc-title': 'Все виды<br/>стоматологических услуг',
+      'svc-sub': "Безболезненное лечение, современное оборудование и индивидуальный подход к каждому пациенту.",
+      'svc1-title': 'Профилактическая Чистка',
+      'svc1-desc': "Глубокая чистка зубов методом ультразвука и Air Flow, защита от кариеса.",
+      'svc2-title': 'Отбеливание Зубов',
+      'svc2-desc': "Современные технологии Zoom и office whitening — яркая белая улыбка за один сеанс.",
+      'svc3-title': 'Лечение Кариеса',
+      'svc3-desc': "Безболезненная анестезия и современные композитные материалы для полного лечения кариеса.",
+      'svc4-title': 'Протезирование',
+      'svc4-desc': "Коронки и мосты из высококачественной керамики и циркония — эстетичный результат.",
+      'svc5-title': 'Имплантация',
+      'svc5-desc': "Восстановление утраченных зубов имплантами Nobel Biocare и Straumann. Пожизненная гарантия.",
+      'svc6-title': 'Эстетическая Стоматология',
+      'svc6-desc': "Виниры, smile design и комплексное эстетическое лечение для улыбки вашей мечты.",
+      'about-label': 'Почему мы?',
+      'about-title': "Ваше здоровье —<br/>наш приоритет",
+      'about-sub': "Family Dental Clinic — современная стоматологическая клиника в Ташкенте. Индивидуальный подход и максимальный комфорт для каждого пациента.",
+      'feat1-title': "Безболезненное Лечение",
+      'feat1-desc': "Современные обезболивающие препараты и технологии делают процесс лечения полностью комфортным.",
+      'feat2-title': 'Гарантия Стерилизации',
+      'feat2-desc': "Всё оборудование стерилизуется в соответствии с международными стандартами.",
+      'feat3-title': 'Удобный График',
+      'feat3-desc': "Работаем пн–сб с 08:00 до 00:00. Приём возможен в вечернее время и в выходные дни.",
+      'results-label': 'Результаты',
+      'results-title': "Преображения<br/>наших пациентов",
+      'results-sub': "За каждой улыбкой стоят современные технологии и мастерство наших врачей.",
+      'reviews-label': 'Отзывы',
+      'reviews-title': "Что говорят<br/>наши пациенты",
+      'review1': '"В Family Dental Clinic вылечила зуб — врачи очень профессиональные и добрые. Совсем не чувствовала боли. Очень довольна результатом!"',
+      'review2': '"После установки импланта жизнь изменилась. Клиника очень современная, врачи подробно ответили на все вопросы. Рекомендую!"',
+      'review3': '"И я, и мои дети ходим только в Family Dental Clinic. Атмосфера в клинике очень уютная, персонал всегда вежливый. 10/10!"',
+      'team-label': 'Наша Команда',
+      'team-title': 'Опытные<br/>врачи',
+      'team-sub': "Каждый наш врач имеет международное образование и сертификаты.",
+      'doc1-role': 'Главный Врач · Имплантолог',
+      'doc2-role': 'Ортодонт · Эстетический Стоматолог',
+      'doc3-role': 'Терапевт · Детский Стоматолог',
+      'contact-label': 'Контакты',
+      'contact-title': "Запишитесь<br/>или свяжитесь с нами",
+      'contact-sub': "Обратитесь к нам — первая консультация бесплатно. Организуем приём в удобное для вас время.",
+      'form-title': 'Записаться на приём',
+      'form-sub': "Заполните форму, и мы свяжемся с вами.",
+      'form-name': 'Ваше имя',
+      'form-name-ph': 'Введите ваше имя',
+      'form-phone': 'Телефон',
+      'form-service': 'Вид услуги',
+      'form-select': 'Выберите...',
+      'form-consult': 'Консультация',
+      'form-msg': 'Сообщение (необязательно)',
+      'form-msg-ph': 'Опишите проблему или вопрос...',
+      'form-submit': 'Записаться →',
+      'footer-clinic': 'Клиника',
+    }
+  };
+
+  let currentLang = 'uz';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.getElementById('btn-uz').classList.toggle('active', lang === 'uz');
+    document.getElementById('btn-ru').classList.toggle('active', lang === 'ru');
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.dataset.i18nPlaceholder;
+      if (t[key] !== undefined) el.placeholder = t[key];
+    });
+    document.documentElement.lang = lang === 'ru' ? 'ru' : 'uz';
+  }
+
+  // ── Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── Mobile menu toggle
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+
+  // ── Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Form submit handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = '✓ Qabul yozildi!';
+    btn.style.background = 'linear-gradient(135deg,#27ae60,#2ecc71)';
+    setTimeout(() => {
+      btn.textContent = 'Qabul Yozish →';
+      btn.style.background = '';
+    }, 3000);
+  }
+
+  // ── Counter animation
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1800;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const nums = [
+          { el: document.querySelectorAll('.stat-number')[0], val: 2000, suf: '+' },
+          { el: document.querySelectorAll('.stat-number')[1], val: 5, suf: '+' },
+          { el: document.querySelectorAll('.stat-number')[2], val: 98, suf: '%' },
+          { el: document.querySelectorAll('.stat-number')[3], val: 15, suf: '+' },
+        ];
+        nums.forEach(n => { if (n.el) animateCounter(n.el, n.val, n.suf); });
+        statsObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  const statsSection = document.querySelector('.stats');
+  if (statsSection) statsObserver.observe(statsSection);
+</script>
+</body>
+</html>
+
+
